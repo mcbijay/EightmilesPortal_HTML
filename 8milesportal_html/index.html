@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Miles Portal</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+<body>
+    <div id="sidebar" method="post">
+        <div class="sidebar_header">
+            <div class="title"> <p>Member Log in</p> </div>
+            <div> <label onclick="sidebar()">X</label> </div>
+        </div>
+      <form action="/HomePage.html" onsubmit="btn_login(event)">
+        <input type="text" name="txt_terminal" id="txt_terminal" placeholder="Terminal/Alias" required>
+        <input type="text" name="txt_uname" id="txt_uname" placeholder="User ID" required>
+        <input type="text" name="txt_pword" id="txt_pword" placeholder="Password" required>
+        <Button type="submit" class="btn" >Login</Button>
+      </form>
+      <div class="login_option">
+        <p class="rememberme"><input type="checkbox" id="cb_remeberme"><label for="cb_remeberme">Remember Me</label></p>
+        <p class="forgotpword">Forgot Password?</p>
+      </div>
+    </div>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header_logo">
+                <i class="fas fa-user" onclick="sidebar()"></i>
+            </div>
+            <div class="header_tab">
+                <ul >
+                    <li onclick="headertab(event)" id="aboutus"  class="tab">About</li>
+                    <li onclick="headertab(event)" id="contactus" class="tab"> Contact Us</li>
+                </ul>
+            </div>
+        </div>
+       
+        <div class="body">
+            <div class="body_prev"  onclick="prevBtn()">
+                <i class="fas fa-chevron-up btn_prev"></i>
+            </div>
+            <div class="body_next" onclick="nextBtn()">
+                <i class="fas fa-chevron-up btn_next" ></i>
+            </div>
+            <div class="body_coverdetails">
+                <div class="body_cover">
+                    <div class="myslide">
+                    </div>
+                </div>
+            </div>
+            <div class="body_content">
+                <div class="aboutus">
+                    <div>
+                        <h1>ABOUT US </h1> 
+                        <h3>WELCOME TO 8 MILES TRAVEL & TOUR </h3> 
+                        <span>Philippines Online Travel Solution </span>  
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum maxime aspernatur odit ipsum inventore exercitationem fuga sit quisquam architecto totam impedit facilis velit non ullam, dicta consectetur consequuntur porro quod.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. In fugiat rem facilis exercitationem ipsa quis illo voluptatibus iste nisi blanditiis nostrum ullam ratione maxime dolorum ipsum officia quibusdam, eum culpa!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contactus">
+                    <div>
+                        <h1>CONTACT US </h1> 
+                        <div class="contactus_details">
+                            <div class="contactus_details_map">
+                                <iframe class="container" id="gmap_canvas" src="https://maps.google.com/maps?q=8%20miles%20travel%20corp&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            </div>
+                            <div >
+                                Address
+                                <p>Rm 21 City Times Square, Basak Lapu-Lapu City, Cebu</p>
+                                Phone
+                                <p class="text-success">236-7827 / 0917 779 2500</p>
+                                Email Address
+                                <p class="text-success">8milestravel@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <label for="" class="badge-danger showfooter" id="showfooter" onclick="footer()">Hide Footer</label>
+    <div id="footer">
+        <div class="left">left</div>
+        <div class="center">8 MILES PORTAL</div>
+        <div class="right">right </div>
+    </div>
+   
+    <script src="/js/jquery-3.4.min.js"></script>
+    <script src="/js/jquery-cookies.js"></script>
+</body>
+<script>
+    myslide();
+    logincookies();
+
+    function logincookies() {
+        var remember_uname = $.cookie("remember_uname");
+        var remember_pword = $.cookie("remember_pword");
+      
+            if (typeof remember_uname === "undefined") {
+            
+            } else {
+                document.getElementById("txt_uname").value = remember_uname;
+                document.getElementById("txt_pword").value = remember_pword;
+                document.getElementById("cb_remeberme").checked = true;
+            }
+    }
+    function btn_login(event)
+    {
+        let uname = document.getElementById("txt_uname").value;
+        let pword = document.getElementById("txt_pword").value;
+       
+            // set cookies
+            document.cookie = "remember_uname = " + uname;
+            document.cookie = "remember_pword = " + pword;
+        
+            //if checkbox is checked remove cookies
+            if(document.getElementById("cb_remeberme").checked === false)
+            {
+                document.cookie = "remember_uname=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
+                document.cookie = "remember_pword=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
+                document.getElementById("cb_remeberme").checked = false;
+            }
+    }
+    function myslide()
+        {
+            for(let i=1; i <= 3; i++)
+            {
+                var img = document.createElement('img');
+                img.src = 'img/' + i+ '.jpg';
+                img.id=''+i+'';
+                document.querySelector('.myslide').appendChild(img)
+            }
+        }
+    function headertab(event)
+    {
+        //remove active tab
+        let elems = document.querySelector(".header_active");
+        if(elems !==null)
+        {
+        elems.classList.remove("header_active");
+        }
+        //add active tab
+        let a =  event.target.getAttribute('id');
+        event.target.classList.add('header_active');
+        //scroll to specific target
+        document.querySelector('.'+a+'').scrollIntoView({
+                behavior: 'smooth'
+            });
+    }
+      // scroll show nav
+    window.addEventListener("scroll", function() {
+            if (document.documentElement.scrollTop > 100) {
+                document.querySelector(".header").classList.add('sticky-top');
+                document.getElementById("footer").classList.add("footertoggle");
+               
+                let showfooterelement = document.getElementById("showfooter");
+                showfooterelement.classList.add("showfootertoggle");
+                showfooterelement.innerHTML ='Show Footer';
+            } else {
+                document.querySelector(".header").classList.remove('sticky-top');
+                document.getElementById("footer").classList.remove("footertoggle");
+                
+                let showfooterelement = document.getElementById("showfooter");
+                showfooterelement.classList.remove("showfootertoggle");
+                showfooterelement.innerHTML ='Hide Footer';
+            }
+        });
+    function sidebar()
+    {
+        let element = document.getElementById("sidebar");
+        element.classList.toggle("sidebartoggle");
+    }
+    function footer(){
+        let element = document.getElementById("footer");
+        element.classList.toggle("footertoggle");
+
+        let showfooterelement = document.getElementById("showfooter");
+        showfooterelement.classList.toggle("showfootertoggle");
+
+        if( showfooterelement.innerHTML == 'Hide Footer')
+        {
+            showfooterelement.innerHTML ='Show Footer';
+        }
+        else
+        {
+            showfooterelement.innerHTML ='Hide Footer';
+        }
+    }
+    const carouselSlide = document.querySelector('.body_cover .myslide');
+    const carouselImages = document.querySelectorAll('.body_cover .myslide img');
+    //Counter
+    let counter = 0;
+    // Button Listeners
+    function nextBtn() {
+        const size = document.querySelector('.body_cover').clientWidth;
+        if (carouselImages[counter].id === '3') {
+            carouselSlide.style.transition = "all ease 2s";
+            counter = -1;
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        }
+        carouselSlide.style.transition = "all ease 2s";
+        counter++;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+    }
+    function prevBtn() {
+        const size = document.querySelector('.body_cover').clientWidth;
+        if (carouselImages[counter].id === '1') {
+            carouselSlide.style.transition = "none";
+            counter = carouselImages.length;
+            carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+        }
+        carouselSlide.style.transition = "all ease 2s";
+        counter--;
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+        // setInterval(function() {
+        //     prevBtn();
+        // }, 5000);
+</script>
+</html>
