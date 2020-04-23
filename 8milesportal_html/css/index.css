@@ -113,7 +113,7 @@ color: darkgrey;
 #sidebar{
     overflow: hidden;
     position: fixed;
-    height: 20em;
+    height: 23em;
     top: 8.3em;
     transition: all ease 0.5s;
     background-color: white;
@@ -398,6 +398,8 @@ color: darkgrey;
     bottom: 0em !important;
     margin-bottom: 0.3em !important;
  }
+
+ /* -------------   Media Query   -------------*/
  @media (max-width: 1000px) {
     .header {
         grid-template-columns: 20% auto;
