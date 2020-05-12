@@ -6,13 +6,37 @@ body{
     font-family: Museo,Helvetica,Arial,sans-serif;
     font-size: 12px;
 }
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn:hover {
+    opacity: 0.8;
+}
 /* -------------   Sidebar   -------------*/
 .sidebar{
     position: fixed;
     height: 100%;
     width: 25em;
     background-color: #5bc895;
-    z-index: 1;
+    z-index: 2;
     margin-left: -32em;
     transition: all ease 0.5s;
     box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.74);
@@ -26,6 +50,7 @@ body{
 .sidebartoggle_width{
     margin-left: -20.2em;
 }
+
 .sidebar_header{
     height: 15em;
     width: 100%;
@@ -36,7 +61,22 @@ body{
 }
 .sidebar_header div{
     padding: 12px !important;
+    position: relative;
+   
 }
+.sidebar_header .sidebar_img{
+    padding: 12px !important;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar_header div img{
+   height: 12em;
+   border-radius: 50%;
+   border: 3px solid #5bc895 ;
+}
+
 .sidebar_header div label{
     color: white;
     background-color: #b73333d1;
@@ -93,6 +133,7 @@ body{
     grid-template-areas:"header_details" "header" "body";
     padding:5em;
     padding-top:0em;
+    padding-bottom:0em;
 }
 .header_details{
     grid-area: header_details;
@@ -111,8 +152,13 @@ body{
 }
 .body{
     grid-area: body;
-    height: 100em;
+    /* height: 100em; */
+    display: grid;
+    grid-template-columns: 21% auto;
+    margin-top:5px;
+    gap: 6px;
 }
+
 /* -------------   HEADER DETAILS LEFT   -------------*/
 .header_details_left{
     position: relative;
@@ -202,6 +248,9 @@ body{
 .header .header_right ul li:hover{
     background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
 }
+.headertab_active{
+    background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
+}
 .header_right ul .settings{
    position: relative;
    width: auto !important;
@@ -257,6 +306,175 @@ body{
     background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
     cursor: pointer;
     margin: 0px !important;
+}
+ /* -------------  Body   -------------*/
+.body .left{
+    position: relative;
+    width: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.body .left .slider{
+   display: flex;
+}
+.body .left .slider img{
+   width: 100%;
+   height: 48.9em;
+}
+.body .left .prev{
+   display: flex;
+   align-items: center;
+   z-index: 1;
+   position: absolute;
+ }
+ .body .left .prev i:hover{
+    color: black !important;
+  }
+ .body .left .prev i{
+    transform: rotate(-90deg);
+    cursor: pointer;
+    font-size: 3em;
+    color: white;
+  }
+  .body .left .next{
+    right: 0;
+    z-index: 1;
+    position: absolute;
+  }
+  .body .left .next i:hover{
+    color: black !important;
+  }
+  .body .left .next i{
+    transform: rotate(90deg);
+    cursor: pointer;
+    font-size: 3em;
+    color: white;
+  }
+
+ .body .right{
+    position: relative;
+    width: auto;
+    overflow: hidden;
+ }
+ .body .right .tab{
+     border: 1px solid #d6e9c6;
+     height: 4em;
+     background-color: #d6e9c6;
+     padding-left:1em;
+ }
+ .body .right .tab li{
+    display: inline-flex;
+    height: 38px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-top: 10px;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    background: #d6e9c6;
+    border: 1px solid #d6e9c6;
+    color: #3c763d;
+    font-size: 13px;
+    cursor: pointer;
+ }
+ .body .right .tab li:hover{
+    background: white; 
+ }
+ .active_li{
+    background: white !important; 
+ }
+ .body .right .slider{
+    display: grid;
+    grid-template-columns: 100% 100% 100%;
+}
+.body .right .slider div{
+    height: 44.8em;
+    background-color: white;
+    position: relative;
+}
+
+.body .right .slider div .checkdestination{
+   display: flex;
+   align-items: center;
+   margin-top: 40px;
+}
+
+.body .right .slider div .checkdestination input{
+    width: 2em;
+    cursor: pointer;
+    margin: 2px 5px 3px 16px;
+}
+.body .right .slider div .checkdestination label{
+    cursor: pointer;
+}
+.body .right .slider div input{
+    width: 42%;
+    margin: 1em;
+    height: 2em;
+    padding-left: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.body .right .slider div .returning{
+    position: relative;
+    width: 45.8%;
+    display: inline-flex;
+    height: 0em;
+}
+.body .right .slider div .returning input{
+    margin-top: 0em !important;
+    width: 100%;
+}
+.body .right .slider div button{
+    margin: 1em;
+    background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
+    float: right;
+    margin-right: 7em;
+}
+
+
+.body .right .slider div .adult{
+    position: relative;
+    width: 13em;
+    display: inline-table;
+}
+.body .right .slider div .adult span{ 
+    position: absolute;
+    color: #a6a6a6;
+    width: 100%;
+    text-align: center;
+}
+.body .right .slider div .adult input{
+    width: 3em;
+    margin-top: 1.5em;
+    padding: 1px;
+}
+/* -------------   Modal Popup   -------------*/
+#logout div header{
+    background-color: #efefef !important;
+    color: #848484 !important;
+    padding-left: 14px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+#logout div header h2{
+  font-size: 21px;
+}
+#logout div header span{
+    font-size: 2.5em;
+}
+#logout footer{
+    display: flex;
+    justify-content: flex-end;
+
+}
+#logout footer button{
+  margin: 0.2em;
+  box-shadow: 2px 1px 1px 0px rgba(0, 0, 0, 0.39);
+}
+.w3-container{
+    height: 10em !important;
 }
  /* -------------   Media Query   -------------*/
  @media (max-width: 1535px) {

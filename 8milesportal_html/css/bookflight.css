@@ -1,0 +1,960 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e9ebee;
+    background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
+    font-family: Museo,Helvetica,Arial,sans-serif !important;
+    font-size: 12px;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* -------------   Wrapper   -------------*/
+.wrapper{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-areas:"header_details" "header" "body";
+    padding:5em;
+    padding-top:0em;
+    padding-bottom:0em;
+}
+.header_details{
+    grid-area: header_details;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin-bottom: 2px;
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.74);
+}
+.header{
+    grid-area: header;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.74);
+}
+.body{
+    grid-area: body;
+    /* height: 100em; */
+    display: grid;
+    grid-template-columns: 100%;
+    margin-top:5px;
+    gap: 6px;
+}
+/* -------------   Sidebar   -------------*/
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 25em;
+    background-color: #5bc895;
+    z-index: 2;
+    margin-left: -32em;
+    transition: all ease 0.5s;
+    box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.74);
+}
+.sidebar #sidebar_id{
+    display: none;
+}
+.sidebartoggle{
+    margin-left: 0em !important;
+}
+.sidebartoggle_width{
+    margin-left: -20.2em;
+}
+
+.sidebar_header{
+    height: 15em;
+    width: 100%;
+    background-color: #51b585;
+    display: grid;
+    grid-template-columns: auto 15%;
+
+}
+.sidebar_header div{
+    padding: 12px !important;
+    position: relative;
+   
+}
+.sidebar_header .sidebar_img{
+    padding: 12px !important;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar_header div img{
+   height: 12em;
+   border-radius: 50%;
+   border: 3px solid #5bc895 ;
+}
+
+.sidebar_header div label{
+    color: white;
+    background-color: #b73333d1;
+    padding: 6px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: cursive;
+    cursor: pointer;
+}
+.sidebar ul li{
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    margin-left: 0em;
+   
+}
+.sidebar ul li:hover{
+    background-color: #51b585;
+    cursor: pointer;
+    transition: none !important;
+}
+.sidebar ul li i{
+    font-size: 33px !important;
+    width: 49px;
+    transition: all ease 0.5s;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding-inline-start: 11px;
+}
+.sidebar_li_toggle{
+    display: none !important;
+}
+.sidebar_li_toggle_icon{
+    margin-left: 16em !important;
+    transition: all ease 0.5s;
+}
+.sidebar ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    color: white;
+}
+/* -------------   HEADER DETAILS LEFT   -------------*/
+.header_details_left{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.header_details_left img{
+    width: 85%;
+    height: 67px;
+}
+/* -------------   HEADER DETAILS RIGHT   -------------*/
+.header_details_right{
+    display: grid;
+    grid-template-columns: 100%;
+}
+.header_details_right div{
+   display: flex;
+   justify-content: flex-end;
+}
+.header_details_right div li{
+   display: inline-flex;
+   width: 30%;
+   height: 2em;
+   align-items: center;
+   margin: 0.1em;
+   margin-bottom: 0;
+   margin-top: 0;
+ }
+ .header_details_right div .left{
+    width: 20em;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: underline;
+     }
+ .header_details_right div .right{
+    display: flex;
+    justify-content: flex-end;
+    width: 7em;
+    margin-right: 1em;
+  }
+
+/* -------------   HEADER LEFT   -------------*/
+.header_left{
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.header_left i{
+  font-size: 20px;
+  margin: 0.2em;
+  -webkit-animation: rotation 4s infinite linear;
+}
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
+}
+.header_left i:hover{
+    -webkit-animation: none !important;
+}
+/* -------------   HEADER RIGHT   -------------*/
+.header .header_right ul {
+    list-style-type: disc;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    display: flex;
+    justify-content: flex-end;
+   
+}
+.header .header_right ul li{
+    display:inline-flex;
+    cursor: pointer;
+    width: 10em;
+    height: 3em;
+   justify-content: center;
+   align-items: center;
+   border-left: 1px solid #e9ebee;
+}
+.header .header_right ul li:hover{
+    background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
+}
+.header_right ul .settings{
+   position: relative;
+   width: auto !important;
+   border-left: 1px solid #e9ebee;
+   padding-left: 10px;
+   padding-right: 10px;
+   background: white !important;  
+   z-index: 1;  
+   cursor: auto !important;
+}
+.header_right ul .settings img{
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.7);
+}
+.header_right ul .settings .panel{
+    position: absolute;
+    width: 100%;
+    height: 0em;
+    top: 3.5em;
+    z-index: -1;
+    overflow: hidden;
+    transition: all ease 0.5s;
+    background-color: white;
+    border-radius: 2px;
+}
+.header_right ul .settings .panel_height{
+    height: 146px !important;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+    cursor: auto;
+}
+.header_right ul .settings i{
+    font-size: 21px;
+    height: 31px;
+    width: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+.header_right ul .settings .i_toggle{
+ transform: rotate(180deg);
+}
+
+.panel label{
+    display: flex;
+    border-bottom: 1px solid #e9ebee;
+    padding: 6px;
+    height: 2em;
+    align-items: center;
+    justify-content: center;
+}
+.panel label:hover{
+    background: linear-gradient(to right,rgba(243, 228, 232, 1) 0%, rgba(229, 242, 252, 1) 100%);
+    cursor: pointer;
+    margin: 0px !important;
+}
+ /* -------------  Body   -------------*/
+.flight_status{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+.flight_status div{
+    width: 5em;
+    height: 5em;
+    border: 1px solid #d6cecf;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: gray;
+    opacity: 0.2;
+}
+.div_active{
+    background-color: #a5ec69 !important;
+    opacity: 1 !important;
+}
+
+.flight_status div p1{
+    display: inline-block;
+    margin-top: 3.5em;
+    position: absolute;
+    width: 8em;
+    text-align: center;
+}
+.flight_status div i{
+    position: absolute;
+    color: white;
+    font-size: 30px;
+}
+.flight_status p{
+    display: inline-flex;
+    width: 10em;
+    margin-top: 30px;
+    height: 1.5px;
+    background: gray;
+    opacity: 0.2;
+}
+.body .flight_details div span{
+    font-size: 2em;
+}
+.body .flight_details div span label{
+    font-size: 15px;
+  
+}
+.body .flight_details div span #lbldepart_from{
+    margin-left: 2em;
+}
+.body .flight_details div span i{
+    margin-left: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.body .flight_details div span #lblreturn_to{
+    margin-left: 2em;
+}
+
+.flight_details_removemarginbottom{
+    margin-bottom: 0em !important;
+}
+
+.body .flight_details .left{
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.74);
+    background-color: white;
+    font-size: 11px;
+}
+
+.body .flight_details .left h1{
+   text-align: center;
+   font-size: 1.3em;
+   font-weight:500;
+   margin-bottom: 1em;
+}
+.body .flight_details .left p{
+   margin-left: 1em;
+ }
+ .body .flight_details .left h6{
+    margin-left: 10px;
+    color: #a5ec69;
+    text-decoration: underline;
+    font-size: 15px;
+  }
+
+
+  .body .flight_details{
+    display: grid;
+    grid-template-columns: 21% auto;
+    margin-top:5px;
+    gap: 6px;
+    margin-bottom: 6em;
+    position: relative;
+}
+.body .flight_details .right{
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.74);
+    background-color: white;
+    /* display: flex; */
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+.body .flight_details .right .slider{
+    display: grid;
+    grid-template-columns: 100% 100% 100% 100%;
+}
+
+
+
+
+.body .flight_details .right .slider .selectflight .schedule{
+    display: grid;
+    grid-template-columns: auto 53.3% 33.3%;
+    box-shadow: none !important;
+    height:6em;
+    position: relative;
+  }
+ 
+.body .flight_details .right .slider .selectflight .schedule div{
+      pointer-events: none !important;
+  }
+.body .flight_details .right .slider .selectflight .schedule:hover{
+      background-color: #a5ec69;
+      cursor: pointer;
+  }
+.schedule_active{
+    background-color: #a5ec69;
+    cursor: pointer;
+  }
+.active_check_icon{
+    position: absolute;
+    right: 0.2em;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+.body .flight_details .right .selectflight .schedule li{
+      display: block;
+      border: 1px solid red;
+  }
+
+.body .flight_details .right .selectflight .schedule ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start:0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+.body .flight_details .right .selectflight .schedule div{
+    box-shadow:none !important;
+    border-bottom: 1px solid #80808038;
+    display: flex;
+    justify-content: center;
+    height: 6em;
+
+    align-items: center;
+  }
+.body .flight_details .right .selectflight .schedule .img{
+      display: flex;
+      justify-content: center;
+  }
+.body .flight_details .right .selectflight .schedule .img img{
+    height: 5em;
+    position: relative;
+    width: 50%;
+  }
+.body .flight_details .right .selectflight .schedule .price{
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+  }
+.body .flight_details .right .selectflight .schedule .price div{
+    background-color: #5d5d5d !important;
+    width: 100%;
+    height: 76%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: 10px;
+  }
+.body .flight_details .right .selectflight .schedule .datetime{
+    display: grid;
+    grid-template-columns: 20.3% 60% 20.3%; 
+  }
+.body .flight_details .right .selectflight .schedule .datetime div{
+    position: relative;
+    display: inherit;
+    height: 4em;
+    border-bottom: none;
+  }
+.body .flight_details .right .selectflight .schedule .datetime div h5{
+        margin: 0px 0;
+    text-align: center;
+   }
+.body .flight_details .right .selectflight .schedule .datetime div h6{
+    margin: 0px 0;
+    text-align: center;
+    font-size: 13px;
+    color: red;
+    margin-block-start: -1.5em;
+    margin-block-end: -0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+   }
+.body .flight_details .right .selectflight .schedule .datetime div h6 i{
+    width: 13px;
+    font-size: 10px;
+    margin-top: 3px;
+   }
+.body .flight_details .right .selectflight .schedule .datetime div i{
+    width: 0em;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    }
+.body .flight_details .right .selectflight .schedule .datetime .datetime_center p{
+    display: inline-flex;
+    width: 18em;
+    margin-top: 13px;
+    height: 0.2px;
+    background: #808080b0;
+ }
+ .body .flight_details .right .selectflight .schedule .datetime .datetime_center i{
+    color: gray;
+    font-size: 10px;
+ }
+
+.body .flight_details .right .addson{
+    border: 1px solid red;
+    width: 986px;
+} 
+.body .flight_details .right .guestdetails{
+    border: 1px solid red;
+    width: 986px;
+} 
+
+ .body #Return_Details{
+    display: grid;
+    grid-template-columns: 21% auto;
+    margin-top:5px;
+    gap: 6px;
+    margin-bottom: 6em;
+}
+.body #Return_Details div span{
+    font-size: 2em;
+}
+.body #Return_Details div span label{
+    font-size: 15px;
+  
+}
+.body #Return_Details div span #lbldepart_from{
+    margin-left: 2em;
+}
+.body #Return_Details div span i{
+    margin-left: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.body #Return_Details div span #lblreturn_to{
+    margin-left: 2em;
+}
+
+/* schedule */
+.body #Return_Details .right{
+    background-color: white;
+}
+.body #Return_Details .right .schedule{
+    display: grid;
+    grid-template-columns: auto 53.3% 33.3%;
+    box-shadow: none !important;
+    height:6em;
+    position: relative;
+  }
+ 
+.body #Return_Details .right .schedule div{
+      pointer-events: none !important;
+  }
+.body #Return_Details .right .schedule:hover{
+      background-color: #a5ec69;
+      cursor: pointer;
+  }
+.schedule_active{
+    background-color: #a5ec69;
+    cursor: pointer;
+  }
+.body #Return_Details .right .schedule li{
+      display: block;
+      border: 1px solid red;
+  }
+
+.body #Return_Details .right .schedule ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start:0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+.body #Return_Details .right .schedule div{
+    box-shadow:none !important;
+    border-bottom: 1px solid #80808038;
+    display: flex;
+    justify-content: center;
+    height: 6em;
+
+    align-items: center;
+  }
+.body #Return_Details .right .schedule .img{
+      display: flex;
+      justify-content: center;
+  }
+.body #Return_Details .right .schedule .img img{
+    height: 5em;
+    position: relative;
+    width: 50%;
+  }
+.body #Return_Details .right .schedule .price{
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+  }
+.body #Return_Details .right .schedule .price div{
+    background-color: #5d5d5d !important;
+    width: 100%;
+    height: 76%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: 10px;
+  }
+.body #Return_Details .right .schedule .datetime{
+    display: grid;
+    grid-template-columns: 20.3% 60% 20.3%; 
+  }
+.body #Return_Details .right .schedule .datetime div{
+    position: relative;
+    display: inherit;
+    height: 4em;
+    border-bottom: none;
+  }
+.body #Return_Details .right .schedule .datetime div h5{
+        margin: 0px 0;
+    text-align: center;
+   }
+.body #Return_Details .right .schedule .datetime div h6{
+    margin: 0px 0;
+    text-align: center;
+    font-size: 13px;
+    color: red;
+    margin-block-start: -1.5em;
+    margin-block-end: -0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+   }
+.body #Return_Details .right .schedule .datetime div h6 i{
+    width: 13px;
+    font-size: 10px;
+    margin-top: 3px;
+   }
+.body #Return_Details .right .schedule .datetime div i{
+    width: 0em;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    }
+.body #Return_Details .right .schedule .datetime .datetime_center p{
+    display: inline-flex;
+    width: 18em;
+    margin-top: 13px;
+    height: 0.2px;
+    background: #808080b0;
+ }
+ .body #Return_Details .right .schedule .datetime .datetime_center i{
+    color: gray;
+    font-size: 10px;
+ }
+
+  /* -------------   Footer   -------------*/
+  .footer{
+    bottom: 0;
+    width: 100%;
+    height: 5em;
+    position: fixed;
+    background-color: black;
+    display: grid;
+    grid-template-columns: 40% 51.6%;
+    padding-left: 5.5em;
+    padding-right: 4em;
+    color: white;
+  }
+  .footer div{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+.footer div .money_currency{
+    border:1px solid #ffffff85;
+    border-radius: 4px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+}
+.footer div .money_currency label{
+    cursor: pointer;
+}
+.footer div .money_currency i{
+    font-size: 20px;
+    height: 13px;
+    display: flex;
+    align-items: flex-end;
+    line-height: none;
+    margin-left: 5px;
+    color: #a5ec69;
+    transition: all ease 0.5s;
+}
+.panel_currency{
+    border-radius: 5px;
+    transition: all ease 0.5s;
+    position: absolute;
+    height: 0em;
+    width: 7em;
+    bottom: 30px;
+    overflow: auto;
+    background-color: white;
+    box-shadow: 2px 1px 11px 0px rgba(0, 0, 0, 0.39);
+    color: black;
+}
+.panel_currency_toogle{
+    height: 14em;
+    padding-top: 1.4em;
+}
+.panel_currency ul{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+.panel_currency ul li{
+    display: inline-flex;
+    border-bottom: 1px solid #e9ebee;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 15px;
+    height: 23px;
+}
+.panel_currency ul li:hover{
+    background-color: #e3e3ea5e;
+    color: #0072ff;
+}
+.i_toggle{
+    transform: rotate(180deg);
+}
+.price_animate{
+    font-size: 18px;
+    position: relative;
+    animation: move 0.4s 2;
+}
+
+@keyframes move{
+    0%{bottom: 0px;}
+    50%{bottom: 10px;}
+    100%{bottom: 0px; }
+}
+  .footer div button{
+    height: 2em;
+    background-color: red;
+    color: white;
+    width: 7em;
+    font-size: 1.8em;
+}
+.footer .footer_btn{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+}
+/* -------------   Modal Popup   -------------*/
+#logout div header{
+    background-color: #efefef !important;
+    color: #848484 !important;
+    padding-left: 14px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+#logout div header h2{
+  font-size: 21px;
+}
+#logout div header span{
+    font-size: 2.5em;
+}
+#logout footer{
+    display: flex;
+    justify-content: flex-end;
+
+}
+#logout footer button{
+  margin: 0.2em;
+  box-shadow: 2px 1px 1px 0px rgba(0, 0, 0, 0.39);
+}
+.w3-container{
+    height: 10em !important;
+}
+/*--------------------------------------------
+Page Loader
+---------------------------------------------*/
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 15em;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgb(43, 41, 41);
+    border: 0px solid red;
+    opacity: 0.8;
+    display: none;
+}
+#preloader_body {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 15em;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgb(43, 41, 41);
+    border: 0px solid red;
+    opacity: 0.8;
+}
+.spinner {
+    margin: 100px auto 0;
+    width: 370px;
+    text-align: center;
+    border: 0px solid red;
+}
+
+.spinner .text-muted {
+    font-size: 1em;
+    color: turquoise;
+}
+
+.spinner > div {
+    display: inline-block;
+    width: 10em;
+}
+.stage {
+    border-bottom: 0px solid #444;
+    display: flex;
+    height: 30px;
+    width: 100%;
+}
+
+.box1 {
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    background-color: #fde778;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1s infinite ease-in-out both;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.box2 {
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    background-color: #fde778;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1s infinite ease-in-out both;
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+.box3 {
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    background-color: #fde778;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1s infinite ease-in-out both;
+    -webkit-animation-delay: -9s;
+    animation-delay: -9s;
+}
+
+.bounce-1 {
+    animation-name: bounce-1;
+    animation-timing-function: linear;
+}
+
+@keyframes bounce-1 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+ /* -------------   Media Query   -------------*/
+ @media (max-width: 1535px) {
+    .wrapper{
+        display:grid;
+        grid-template-columns: 100%;
+        grid-template-areas:"header_details" "header" "body";
+        padding:1em;
+        padding-top:0em;
+    }
+}
+@media (max-width: 600px) {
+    .header_details {
+        grid-area: header_details;
+        background-color: white;
+        display: grid;
+        grid-template-columns: 35% 65%;
+        margin-bottom: 2px;
+        box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.74);
+    }
+    .header_details_right div .right {
+        display: flex;
+        justify-content: flex-end;
+        width: 8.2em;
+        margin-right: 1em;
+    }
+}

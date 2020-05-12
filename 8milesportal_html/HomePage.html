@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="css/modal_popup.css">
     <link rel="stylesheet" href="css/homepage.css">
     <link rel="stylesheet" href="css/all.min.css">
+
 </head>
 <body onload="startTime()">
     <div class="sidebar">
         <label id="sidebar_id">0</label>
         <div class="sidebar_header">
-                <div> </div>
-                <div> <label for="" onclick="sidebar_close()">X</label> </div>
+                <div class="sidebar_img"> <img src="/img/homepage/a.png" alt=""></div>
+                <div> <label for="" onclick="sidebar_close()">X</label></div>
         </div>
         <ul class="list">
             <li><i class="fas fa-tachometer-alt"></i><p class="ul">Dashboard</p> </li>
             <li><i class="fas fa-user-friends"></i><p class="ul">Users</p> </li>
             <li><i class="fas fa-tools"></i><p>Settings</p></li>
-            <li><i class="fas fa-home"></i><p></p></li>
+            <li><i class="fas fa-home"></i><p>Home</p></li>
         </ul>
     </div>
    <div class="wrapper"> 
     <div class="header_details">
         <div class="header_details_left"><img src="/img/homepage/8mileslogo.png" alt=""></div>
         <div class="header_details_right">
-            <div> <li class="left">lorem epsom lorem epsom</li><li class="right">: Terminal/Alias</li></div>
-            <div> <li class="left">Jaylingers</li><li class="right">: User ID</li> </div>
+            <div> <li class="left"><label for="" id="lbl_terminal"></label></li><li class="right">: Terminal/Alias</li></div>
+            <div> <li class="left"><label for="" id="lbl_userid"></label></li><li class="right">: User ID</li> </div>
             <div> <li class="left" id="time"></li><li class="right">:Date & Time</li> </div>
             <div> <li class="left">1,500 Php</li><li class="right">: Load Wallet</li> </div>
         </div>
@@ -35,25 +37,133 @@
            <div class="header_left"> <i class="fas fa-cog" onclick="sidebar_toggle()"></i>  Settings</div>
            <div class="header_right">
                <ul >
-                   <li>AIRLINES</li>
+                   <li class="headertab_active">AIRLINES</li>
                    <li>FERRIES</li>
                    <li>HOTEL</li>
-                   <li class="settings" >JAYLINGERS<img src="/img/homepage/Jaylingers.jpg" alt="">
+                   <li class="settings" ><label for="" id="lbl_settings_userid"></label><img src="/img/homepage/Jaylingers.jpg" alt="">
                      <i class="fas fa-sort-down" onclick="toggle_panel()"></i>
                     <div class="panel">
                        <label for="">Payment</label>
                        <label for="">Activity Log</label>
                        <label for="">Load Wallet</label>
-                       <label for="">Log Out</label>
+                       <label for="" onclick="document.getElementById('logout').style.display='block'">Log Out</label>
                     </div>
                   </li>
                </ul>
            </div>
         </div>
-        <div class="body">body</div>
+        <div class="body">
+            <div class="left">
+                <div class="prev"> <i class="fas fa-chevron-up" onclick="left_prevBtn()"></i></div>
+                <div class="next"> <i class="fas fa-chevron-up" onclick="left_nextBtn()"></i></div>
+                <div class="slider">
+                   
+                    <img src="/img/homepage/1.jpg" id="1" alt="">
+                    <img src="/img/homepage/2.jpg" id="2" alt="">
+                    <img src="/img/homepage/3.jpg" id="3" alt="">
+                </div>
+            </div>
+            <div class="right">
+                <div class="tab">
+                    <li onclick="right_Domestic(event)" class="active_li">Domestic</li>
+                    <li onclick="right_International(event)">International</li>
+                </div>
+               
+                    <div class="slider">
+                      <div id="1">
+                          <p class="checkdestination">
+                            <input type="checkbox" checked id="cb_roundtrip" onclick="cb_roundtrip()"><label for="cb_roundtrip">Round Trip</label>
+                            <input type="checkbox"  id="cb_oneway" onclick="cb_oneway()"><label for="cb_oneway">One Way</label>
+                          
+                          </p>
+                        
+                         
+                        <form action="/BookFlight.html" onsubmit="findflights(event)">
+                          <input type="text" id="txt_flyingfrom" placeholder="Flying From" required> 
+                         
+                            <input type="text" id="txt_flyingto" placeholder="Flying To" required>
+                         
+                        
+                          <input type="text" id="txt_departing" placeholder="Departing On" required>
+                          <p class="returning">
+                          <input type="text" id="txt_returning" placeholder="Returning On" required>
+                        </p>
+                        <p class="adult">
+                            <span>Adult (12+ years)</span>
+                            <input type="button" value="-" class="btn" onclick="btnadult_minus()"> <label for="sd" id="lbladult_result">1</label>  <input type="button" onclick="btnadult_plus()" value="+" class="btn"> 
+                            <!-- height: 25px;
+                            padding: 1px; -->
+                          </p>
+                        <p class="adult">
+                            <span>Child (2-11 years)</span>
+                            <input type="button" value="-" class="btn" onclick="btnchild_minus()"> <label for="sd" id="lblchild_result">0</label>  <input type="button" value="+" class="btn" onclick="btnchild_plus()"> 
+                        </p>
+                        <p class="adult">
+                            <span>Infant (Under 2 years)</span>
+                            <input type="button" value="-" class="btn" onclick="btninfant_minus()"> <label for="sd" id="lblinfant_result">0</label>  <input type="button" value="+" class="btn" onclick="btninfant_plus()"> 
+                        </p>
+                        <br>
+                          <button type="submit" class="btn">Find Flights</button>
+                        </form>
+                      </div>
+                      <div id="2">
+                        <form >
+                            <input type="text" placeholder="Flying From" required>
+                            <input type="text" placeholder="Flying To" required>
+                            <input type="text" placeholder="Departing On" required>
+                            <input type="text" placeholder="Returning On" required>
+                            <button type="submit" class="btn">Find Flights</button>
+                          </form>
+                      </div>
+                  </div>
+               
+            </div>
+           
+           
+
+        </div>
    </div>
+
+    <!-- Modal -->
+   <div id="logout" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-teal"> 
+          <div><h2>Ready to Leave?</h2></div>
+          <div><span onclick="document.getElementById('logout').style.display='none'" class="w3-button w3-display-topright">&times;</span></div>
+      </header>
+      <div class="w3-container">
+        <p>Select "Logout" below if you are ready to end your current session.</p>
+      </div>
+      <footer class=" w3-teal">
+        <button onclick="logout()" type="button" class="w3-button w3-red">Logout</button>
+        <button onclick="document.getElementById('logout').style.display='none'" type="button" class="w3-button w3-blue">Stay</button>
+      </footer>
+    </div>
+  </div>
+
+   <script src="/js/jquery-3.4.min.js"></script>
+   <script src="/js/jquery-cookies.js"></script>
 </body>
 <script>
+  logincookies();
+  function logincookies() {
+        var uname = $.cookie("uname");
+        if (typeof uname === "undefined") 
+        {
+            var url = "/";
+            window.location.href = url;
+        }
+        else
+        {
+           // cookies details
+            var remember_terminal = $.cookie("terminalID");
+            var remember_uname = $.cookie("uname");
+            document.getElementById("lbl_terminal").innerHTML = remember_terminal;
+            document.getElementById("lbl_userid").innerHTML = remember_uname;
+            document.getElementById("lbl_settings_userid").innerHTML = remember_uname.toUpperCase();
+        }
+       
+    }
    
     function toggle_panel(){
         document.querySelector('.panel').classList.toggle("panel_height");
@@ -98,7 +208,8 @@
        
     }
     function checkTime(i) {
-        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        if (i < 10)
+         {i = "0" + i};  // add zero in front of numbers < 10
         return i;
     }
     function sidebar_toggle()
@@ -139,6 +250,203 @@
                 listItems[i].classList.toggle("sidebar_li_toggle");
                 listItems_icon[i].classList.toggle("sidebar_li_toggle_icon");
             }
+    }
+    function logout()
+    {
+        document.cookie = "uname=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
+        document.cookie = "terminalID=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
+        var url = "/";
+        window.location.href = url;
+    }
+
+//LEFT SLIDER
+    const left_carouselSlide = document.querySelector(' .body .left .slider');
+    const left_carouselImages = document.querySelectorAll(' .body .left .slider img');
+    //Counter
+    let left_counter = 0;
+    // Button Listeners
+    function left_nextBtn() {
+        const size = document.querySelector(' .body .left').clientWidth;
+        if (left_carouselImages[left_counter].id === '3') {
+            left_carouselSlide.style.transition = "all ease 1s";
+            left_counter = -1;
+            left_carouselSlide.style.transform = 'translateX(' + (-size * left_counter) + 'px)';
+        }
+        left_carouselSlide.style.transition = "all ease 1s";
+        left_counter++;
+        left_carouselSlide.style.transform = 'translateX(' + (-size * left_counter) + 'px)';
+    }
+    function left_prevBtn() {
+        const size = document.querySelector(' .body .left').clientWidth;
+        if (left_carouselImages[left_counter].id === '1') {
+            left_carouselSlide.style.transition = "all ease 1s";
+            left_counter = left_carouselImages.length;
+            left_carouselSlide.style.transform = 'translateX(' + (-size * left_counter) + 'px)';
+        }
+        left_carouselSlide.style.transition = "all ease 1s";
+        left_counter--;
+        left_carouselSlide.style.transform = 'translateX(' + (-size * left_counter) + 'px)';
+    }
+ setInterval(function() {
+    left_nextBtn();
+        }, 3000);
+//RIGHT SLIDER
+    const carouselSlide = document.querySelector(' .body .right .slider');
+    const carouselImages = document.querySelectorAll(' .body .right .slider div');
+    //Counter
+    let counter = 0;
+    function right_Domestic(event) {
+        const select_active = document.querySelectorAll('.body .right .tab li');
+                for (let i = 0; i < select_active.length; i++) {
+                    select_active[i].classList.remove("active_li");
+                }
+                event.target.classList.add('active_li');
+
+                const size = document.querySelector(' .body .right').clientWidth;
+                if (carouselImages[counter].id === '2') {
+                    carouselSlide.style.transition = "all ease 1s";
+                    counter--;
+                    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+                }
+    }
+    function right_International(event) {
+        const select_active = document.querySelectorAll('.body .right .tab li');
+                for (let i = 0; i < select_active.length; i++) {
+                    select_active[i].classList.remove("active_li");
+                }
+                event.target.classList.add('active_li');
+
+                const size = document.querySelector(' .body .right').clientWidth;
+                if (carouselImages[counter].id === '1') {
+                    carouselSlide.style.transition = "all ease 1s";
+                    counter++;
+                    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+                }
+    }
+    function findflights(event)
+    {
+      let flight_type;
+      let flightservice = 'Domestic'; 
+      let from = document.getElementById('txt_flyingfrom').value;
+      let to = document.getElementById('txt_flyingto').value;
+      let departingon = document.getElementById('txt_departing').value;
+      let returningon = document.getElementById('txt_returning').value;
+
+      let adult = document.getElementById('lbladult_result').textContent;
+      let child = document.getElementById('lblchild_result').textContent;
+      let infant = document.getElementById('lblinfant_result').textContent;
+     if( document.getElementById("cb_roundtrip").checked === false)
+     {
+        flight_type ='One Way'
+       
+        console.log('Flying Type: '+ flight_type);
+        console.log('Flying From: '+ from);
+        console.log('Flying To: '+ to);
+        console.log('Departing on: '+ departingon);
+        console.log('Adult: '+ adult);
+        console.log('Child: '+ child);
+        console.log('Infant: '+ infant);
+        // set cookies
+        document.cookie ='Flight Service ='+ flightservice;
+        document.cookie ='Flying Type = '+ flight_type;
+        document.cookie ='Flying From ='+ from;
+        document.cookie ='Flying To ='+ to;
+        document.cookie ='Departing on ='+ departingon;
+        document.cookie ='Adult ='+ adult;
+        document.cookie ='Child ='+ child;
+        document.cookie ='Infant ='+ infant;
+       
+     }
+     else
+     {
+        flight_type ='Round Trip'
+       
+        console.log('Flying Type: '+ flight_type);
+        console.log('Flying From: '+ from);
+        console.log('Flying To: '+ to);
+        console.log('Departing on: '+ departingon);
+        console.log('Returning on: '+ returningon);
+        console.log('Adult: '+ adult);
+        console.log('Child: '+ child);
+        console.log('Infant: '+ infant);
+        // set cookies
+        document.cookie ='Flight Service ='+ flightservice;
+        document.cookie ='Flying Type = '+ flight_type;
+        document.cookie ='Flying From ='+ from;
+        document.cookie ='Flying To ='+ to;
+        document.cookie ='Departing on ='+ departingon;
+        document.cookie ='Returning on ='+ returningon;
+        document.cookie ='Adult ='+ adult;
+        document.cookie ='Child ='+ child;
+        document.cookie ='Infant ='+ infant;
+     }
+
+     document.cookie = "bookflight_currency_name = " + "PHP";
+     document.cookie = "bookflight_currency_value = " + "1.00";
+    }
+    function cb_oneway()
+    {
+        document.getElementById("cb_roundtrip").checked = false;
+        document.getElementById("txt_returning").style.display = "none";
+
+
+        console.log(document.getElementById("txt_returning").attributes);
+         document.getElementById("txt_returning").removeAttribute("required");
+    }
+    function cb_roundtrip()
+    {
+        document.getElementById("txt_returning").style.display = "inline";
+        document.getElementById("cb_oneway").checked = false;
+        document.getElementById("txt_returning").setAttribute("required", "");   
+  
+    }
+    //Adult
+    function btnadult_minus()
+    {
+        let res = document.getElementById('lbladult_result').textContent;
+        if (res > 1)
+        {
+            let b =  parseInt(res) - 1;
+            document.getElementById('lbladult_result').textContent = b;
+        }
+    }
+    function btnadult_plus()
+    {
+        let res = document.getElementById('lbladult_result').textContent;
+        let b =  parseInt(res) + 1;
+        document.getElementById('lbladult_result').textContent = b;
+    }
+    //Child
+    function btnchild_minus()
+    {
+        let res = document.getElementById('lblchild_result').textContent;
+        if (res > 0)
+        {
+            let b =  parseInt(res) - 1;
+            document.getElementById('lblchild_result').textContent = b;
+        }
+    }
+    function btnchild_plus()
+    {
+        let res = document.getElementById('lblchild_result').textContent;
+        let b =  parseInt(res) + 1;
+        document.getElementById('lblchild_result').textContent = b;
+    }
+    //Infant
+    function btninfant_minus()
+    {
+        let res = document.getElementById('lblinfant_result').textContent;
+        if (res > 0)
+        {
+            let b =  parseInt(res) - 1;
+            document.getElementById('lblinfant_result').textContent = b;
+        }
+    }
+    function btninfant_plus()
+    {
+        let res = document.getElementById('lblinfant_result').textContent;
+        let b =  parseInt(res) + 1;
+        document.getElementById('lblinfant_result').textContent = b;
     }
 </script>
 </html>

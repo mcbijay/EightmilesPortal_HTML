@@ -100,30 +100,49 @@
     myslide();
     logincookies();
 
+  
     function logincookies() {
-        var remember_uname = $.cookie("remember_uname");
-        var remember_pword = $.cookie("remember_pword");
-      
+        var uname = $.cookie("uname");
+        if (typeof uname === "undefined") {
+
+             // remember login
+            var remember_terminal = $.cookie("remember_terminal");
+            var remember_uname = $.cookie("remember_uname");
+            var remember_pword = $.cookie("remember_pword");
             if (typeof remember_uname === "undefined") {
             
             } else {
+                document.getElementById("txt_terminal").value = remember_terminal;
                 document.getElementById("txt_uname").value = remember_uname;
                 document.getElementById("txt_pword").value = remember_pword;
                 document.getElementById("cb_remeberme").checked = true;
             }
+        }
+        else
+        {
+            var url = "/HomePage.html";
+            window.location.href = url;
+        }
+       
     }
     function btn_login(event)
     {
+        let terminal = document.getElementById("txt_terminal").value;
         let uname = document.getElementById("txt_uname").value;
         let pword = document.getElementById("txt_pword").value;
        
             // set cookies
+            document.cookie = "remember_terminal = " + terminal;
             document.cookie = "remember_uname = " + uname;
             document.cookie = "remember_pword = " + pword;
+
+            document.cookie = "terminalID = " + terminal;
+            document.cookie = "uname = " + uname;
         
             //if checkbox is checked remove cookies
             if(document.getElementById("cb_remeberme").checked === false)
             {
+                document.cookie = "remember_terminal=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
                 document.cookie = "remember_uname=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
                 document.cookie = "remember_pword=geeky; expires=Monday, 3-Sep-2018 09:00:00 UTC";
                 document.getElementById("cb_remeberme").checked = false;

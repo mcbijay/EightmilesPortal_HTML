@@ -1,0 +1,42 @@
+-- SELECT ID OR CLASS NAME
+    1. document.querySelectorAll('')
+    2. document.querySelector('')
+    3. document.getElementsByTagName('p')
+    4. event.target.getAttribute('id');  
+    5. dateto[0].childNodes[3].getElementsByTagName('h5')[0].innerHTML /// selec div get tagname and get text value
+    6. event.target.tagName === "LI" // selected tagName
+
+-- REMOVE TAG NAME
+    1. select the tagname u want to removed 
+    2. console.log( document.querySelectorAll('.schedule i') );
+    3.var a = document.querySelectorAll('.schedule i');
+        for (let i = 0; i < a.length; i++)
+        {
+            a[0].parentNode.removeChild(a[0]);
+        }
+-- ADD ICON (I) / DIV / Paragraph (P)
+    1. var check_icon = document.createElement("i");
+        check_icon.classList = "fas fa-user active_check_icon";
+        check_icon.style.fontSize="3em";
+        check_icon.style.color="white";
+        document.getElementById(i).appendChild(check_icon);
+
+-- REMOVE & ADD ATTRIBUTE INPUT TEXT
+    1. document.getElementById("txt_flyingto").setAttribute("required", ""); // adding Required inside input text
+    2.  document.getElementById("txt_flyingto").removeAttribute("required"); // removed required
+
+-- ADD BODY CONTENT 
+    1. to add content use innerhtml += ,appendChild and append.
+     for (let i = 0; i < 20; i++)
+        {
+            document.querySelector('.right').innerHTML  += "<div class='schedule' id='"+i+"'onclick='selectsched(event)'><div class='img' ><img src='/img/bookflight/airasia.png'></div><div class='datetime' > <div> <h5>06:15</h5><h6>1h 30m</h6></div><div> </div><div>  <h5>06:15</h5> <h6>1h 30m</h6> </div></div><div class='price' > <div> 1,227.57 PHP </div>   </div>    </div>";
+        }
+-- Reset Animation to Use Again
+         1.   document.getElementById("lbl_price").classList.remove('price_animate'); // Removed class
+         2.  void document.getElementById("lbl_price").offsetWidth;             //reset animation
+         3.  document.getElementById("lbl_price").classList.add('price_animate'); //add class
+-- Rename specific value or text 
+        1. price.replace("PHP", "");
+          
+   
+           
